@@ -1,10 +1,15 @@
-import { all, takeLatest, put, call, select } from 'redux-saga/effects';
+import { all, takeLatest, put, call } from 'redux-saga/effects';
 import api from '../services/api'
 
 
 async function apiGet(){
-    const response = await api.get('/?results=10')
-    return response.data.results
+    const response = await api.get('/?nat=br&results=30')
+    try{
+        return response.data.results
+    }catch(err){
+        console.log(err)
+        return err
+    }
 }
 
 function* assynListPeople(){

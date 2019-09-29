@@ -5,6 +5,8 @@ import { Provider } from 'react-redux'
 
 import Route from './routes'
 import store from './store/store'
+import './styles/css/app.css'
+
 
 export default () => {
   return(

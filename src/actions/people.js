@@ -1,5 +1,3 @@
-import api from '../services/api'
-
 export function createPeople(){
     
 }

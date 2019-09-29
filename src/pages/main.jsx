@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 
 // Redux
@@ -7,6 +7,8 @@ import { connect } from 'react-redux'
 
 // Actions
 import * as People  from '../actions/people'
+import Card from '../components/card'
+import CounterPeople from '../components/countpeople'
 
 
 class Main extends Component {
@@ -22,13 +24,14 @@ class Main extends Component {
 
     render() {
         const { people } = this.props.people
-
-        console.log(people)
-
+        
         return (
-            <div className="container-people">
-                {people.map((person, index) => <h1 key={index}>{person.name.first}</h1>)}
-            </div>
+            <Fragment>
+                <CounterPeople />
+                <div className="container-card-people">
+                    {people.map((person, i) => <Card key={i} person={person}/>)}
+                </div>
+            </Fragment>
         );
     }
 }
