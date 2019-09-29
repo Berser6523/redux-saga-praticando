@@ -12,18 +12,20 @@ import CounterPeople from '../components/countpeople'
 
 
 class Main extends Component {
-    state = {
-        people:{
-
-        }
-    }
-
+    
     componentDidMount(){
         this.props.listPeople()
     }
 
     render() {
-        const { people } = this.props.people
+        let people  = this.props.people.people
+        const { filtro } = this.props
+
+
+        if(filtro){
+            people = people.filter((person) => JSON.stringify(person).includes(filtro))
+        }
+
         
         return (
             <Fragment>
@@ -37,7 +39,8 @@ class Main extends Component {
 }
 
 const mapStateToProps = state => ({
-    people: state.people
+    people: state.people,
+    filtro: state.people.filtro
 });
 
 const mapDispatchToProps = dispatch =>

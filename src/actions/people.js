@@ -1,5 +1,8 @@
-export function createPeople(){
-    
+export function filterPeople(value){
+    return{
+        type: 'FILTRO',
+        value,
+    }
 }
 
 export function listPeople(){

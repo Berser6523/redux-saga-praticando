@@ -1,5 +1,6 @@
 const initialState = {
-    people: []
+    people: [],
+    filtro: '',
 }
 
 export default function people(state = initialState, action){
@@ -7,6 +8,11 @@ export default function people(state = initialState, action){
         case 'GET_PEOPLE':
             return Object.assign({}, state, {
                 people: action.people
+              })
+
+        case 'FILTRO':
+            return Object.assign({}, state, {
+                filtro: action.value
               })
 
         default:

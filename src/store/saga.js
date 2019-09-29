@@ -3,7 +3,8 @@ import api from '../services/api'
 
 
 async function apiGet(){
-    const response = await api.get('/?nat=br&results=30')
+    const response = await api.get('/?nat=br&results=100')
+    
     try{
         return response.data.results
     }catch(err){
