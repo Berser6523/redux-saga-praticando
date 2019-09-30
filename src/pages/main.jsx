@@ -14,13 +14,12 @@ import CounterPeople from '../components/countpeople'
 class Main extends Component {
     
     componentDidMount(){
-        this.props.listPeople()
+        this.props.requestPeopeList()
     }
 
     render() {
-        let people  = this.props.people.people
+        let people  = this.props.people
         const { filtro } = this.props
-
 
         if(filtro){
             people = people.filter((person) => JSON.stringify(person,['name','first','last','title' ,'email', 'phone']).includes(filtro))
@@ -39,7 +38,7 @@ class Main extends Component {
 }
 
 const mapStateToProps = state => ({
-    people: state.people,
+    people: state.people.data,
     filtro: state.people.filtro
 });
 

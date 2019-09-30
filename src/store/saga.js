@@ -3,27 +3,26 @@ import api from '../services/api'
 
 
 async function apiGet(){
-    const response = await api.get('/?nat=br&results=100')
+    const response = await api.get('/?nat=br&results=30')
     
-    try{
-        return response.data.results
-    }catch(err){
-        console.log(err)
-        return err
-    }
+    return response.data.results
+    
 }
 
-function* assynListPeople(){
-    const response = yield call(apiGet)
+function* getPeople(){
+    try{
+        const response = yield call(apiGet)
+        yield put({ type: 'SUCCESS_PEOPLE_LIST', data: response, filtro:""})
+    }catch(err){
+        console.log(err)
+        yield put({ type: 'FAILUIRE_PEOPLE_LIST', filtro:""})
+    }
         
-    yield put({
-        type: 'GET_PEOPLE',
-        people: response
-    })
+    
 }
 
 export default function* rootSaga() {
   yield all([
-      takeLatest("ASYNC_REQUEST_PEOPLE", assynListPeople)
+      takeLatest("REQUEST_PEOPLE_LIST", getPeople)
   ]);
 }
