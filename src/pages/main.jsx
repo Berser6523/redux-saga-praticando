@@ -21,13 +21,11 @@ class Main extends Component {
         let people  = this.props.people.people
         const { filtro } = this.props
 
-        console.log(people)
 
         if(filtro){
             people = people.filter((person) => JSON.stringify(person,['name','first','last','title' ,'email', 'phone']).includes(filtro))
         }
 
-        
         return (
             <Fragment>
                 <CounterPeople />
