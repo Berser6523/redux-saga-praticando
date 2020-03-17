@@ -1,0 +1,16 @@
+import { createGlobalStyle } from "styled-components";
+
+export default createGlobalStyle`
+	@media (min-width: 320px) {
+		.container {
+			width: 1110px;
+			margin: 0 auto;
+		}
+	}
+
+	@media (max-width: 1280px) {
+		.container {
+			width: 90%;
+		}
+	}
+`;
