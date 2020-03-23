@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 // Redux
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-
+import { Title } from "../components/home/styled";
 // Actions
 import { Creators as PeopleCreators } from "../store/ducks/people";
 
@@ -14,8 +14,9 @@ const Main = ({ requestPeopeList, people }) => {
 
 	return (
 		<>
+			<Title> Segurança</Title>
 			{people.map((repos, i) => (
-				<h1 key={i}> {repos.name} </h1>
+				<Title key={i}> {repos.name} </Title>
 			))}
 		</>
 	);
